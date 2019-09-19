@@ -76,7 +76,7 @@
         }
     }
     function returnPLALISTURL(){
-        if (window.location.href.indexOf("watch?v=") > -1 && window.location.href.indexOf("&list=") < 0) {
+        if (window.location.href.indexOf("watch?v=") > -1) {
             var finalURL = "https://www.youtube.com/playlist?list=UU" + document.getElementsByClassName('yt-user-info')[0].childNodes[1].attributes[0].nodeValue.replace("/channel/UC", "");
             console.log(finalURL);
             return finalURL;
