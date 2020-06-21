@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name        Youtube uploads as playlist
 // @namespace   pk-scripts
-// @version     1.2
-// @date        2019-09-19
+// @version     1.3
+// @date        2020-06-21
 // @description Create playlist of all uploaded videos from user.
 // @author      pK
-// @copyright   pK 2019
+// @copyright   pK 2020
 // @license MIT https://opensource.org/licenses/MIT
 // @match          *://*.youtube.com/*
 // ==/UserScript==
@@ -76,8 +76,10 @@
         }
     }
     function returnPLALISTURL(){
+        var regexik = /.*channel.[U][C]/gi;
+var channelid = document.getElementsByClassName('yt-simple-endpoint style-scope ytd-video-owner-renderer')[0].href.replace(regexik, '');
         if (window.location.href.indexOf("watch?v=") > -1) {
-            var finalURL = "https://www.youtube.com/playlist?list=UU" + document.getElementsByClassName('yt-user-info')[0].childNodes[1].attributes[0].nodeValue.replace("/channel/UC", "");
+            var finalURL = "https://www.youtube.com/playlist?list=UU" + channelid;
             console.log(finalURL);
             return finalURL;
 
