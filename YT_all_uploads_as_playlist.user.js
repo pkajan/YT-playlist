@@ -10,7 +10,7 @@
 // @license MIT https://opensource.org/licenses/MIT
 // @match          *://*.youtube.com/*
 // ==/UserScript==
-/*// @run-at document-end*/
+
 (function() {
     'use strict';
 
