@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Youtube uploads as playlist
 // @namespace   pk-scripts
-// @version     1.42
+// @version     1.5
 // @date        2020-06-22
 // @description Create playlist of all uploaded videos from user.
 // @author      pK
@@ -23,29 +23,6 @@
                 Addytpolymer();
             }
         }, 100);
-    } else {
-        setInterval(function() {
-            if (window.location.href.indexOf("watch?v=") < 0) {
-                return false;
-            }
-            if (document.getElementById("watch7-subscription-container") && document.getElementById("show-all-videos-playlist") === null) {
-                AddhtmlDV();
-            }
-        }, 100);
-    }
-
-    function AddhtmlDV() {
-        if (document.getElementById("watch7-subscription-container")) {
-            var wrap = document.getElementById('watch7-subscription-container');
-            var button = "<div id='show-all-videos-playlist' style='display: inline-block; margin-left: 10px; vertical-align: middle;'>";
-            button += "<a href=\""+ returnPLALISTURL() +"\" title=\"Create playlist\" target=\"_blank\"" +
-                "style=\"display: inline-block; font-size: inherit; height: 22px; border: 1px solid rgb(0, 183, 90); border-radius: 3px; padding-left: 5px; cursor: pointer; vertical-align: middle; position: relative; line-height: 22px; text-decoration: none; z-index: 1; color: rgb(255, 255, 255);\">";
-            button += "📖 ";
-            button += "<span style=\"padding-right: 15px;font-weight: bold;font-family: 'Roboto';\">Playlist</span></a></div>";
-            var style = "<style>#show-all-videos-playlist button::-moz-focus-inner{padding:0;margin:0}#show-all-videos-playlist a{background-color:#15388c}#show-all-videos-playlist a:hover{background-color:#ba160c}#show-all-videos-playlist a:active{background-color:rgb(0, 151, 74)}</style>";
-            var tmp = wrap.innerHTML;
-            wrap.innerHTML = tmp + button + style;
-        }
     }
 
     function Addytpolymer() {
@@ -53,7 +30,7 @@
         buttonDiv.style.width = "100%";
         buttonDiv.id = "show-all-videos-playlist";
         var addButton = document.createElement("a");
-        addButton.appendChild(document.createTextNode("Create Playlist"));
+        addButton.appendChild(document.createTextNode("📖 Create Playlist"));
         addButton.style.width = "100%";
         addButton.style.backgroundColor = "#15388c";
         addButton.style.color = "white";
@@ -80,7 +57,7 @@
         var regexik = /.*channel.[U][C]/gi;
         var channelid = null;
         var channel_id_elem = document.getElementsByClassName('yt-simple-endpoint style-scope yt-formatted-string');
-        for(var i=0;i<channel_id_elem.length+1;i++){
+        for(var i=0;i<channel_id_elem.length;i++){
             if(channel_id_elem[i].href.includes("/channel/")){
                 channelid = channel_id_elem[i].href.replace(regexik, '');
                 break;
