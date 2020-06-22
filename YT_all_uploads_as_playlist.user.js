@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name        Youtube uploads as playlist
 // @namespace   pk-scripts
-// @version     1.4
+// @version     1.42
 // @date        2020-06-22
 // @description Create playlist of all uploaded videos from user.
 // @author      pK
 // @copyright   pK 2020
-// @run-at document-end
+
 // @license MIT https://opensource.org/licenses/MIT
 // @match          *://*.youtube.com/*
 // ==/UserScript==
-
+/*// @run-at document-end*/
 (function() {
     'use strict';
 
@@ -80,10 +80,10 @@
         var regexik = /.*channel.[U][C]/gi;
         var channelid = null;
         var channel_id_elem = document.getElementsByClassName('yt-simple-endpoint style-scope yt-formatted-string');
-        console.log(channel_id_elem.length);
-        for(var i=0;i<10;i++){
+        for(var i=0;i<channel_id_elem.length+1;i++){
             if(channel_id_elem[i].href.includes("/channel/")){
                 channelid = channel_id_elem[i].href.replace(regexik, '');
+                break;
             }
         }
 
@@ -91,7 +91,6 @@
             var finalURL = "https://www.youtube.com/playlist?list=UU" + channelid;
             console.log(finalURL);
             return finalURL;
-
         }
     }
 })();
