@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Youtube uploads as playlist
 // @namespace   pk-scripts
-// @version     1.5
+// @version     1.50
 // @date        2020-06-22
 // @description Create playlist of all uploaded videos from user.
 // @author      pK
