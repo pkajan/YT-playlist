@@ -1,21 +1,23 @@
 // ==UserScript==
 // @name        Youtube uploads as playlist
 // @namespace   pk-scripts
-// @version     1.50
-// @date        2020-06-22
+// @version     1.51
+// @date        2022-02-19
 // @description Create playlist of all uploaded videos from user.
 // @author      pK
-// @copyright   pK 2020
+// @copyright   pK 2022
 
 // @license MIT https://opensource.org/licenses/MIT
 // @match          *://*.youtube.com/*
+// @downloadURL https://github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
+// @updateURL   https://github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
 // ==/UserScript==
 
-(function() {
+(function () {
     'use strict';
 
     if (document.getElementById("polymer-app") || document.getElementById("masthead") || window.Polymer) {
-        setInterval(function() {
+        setInterval(function () {
             if (window.location.href.indexOf("watch?v=") < 0) {
                 return false;
             }
@@ -53,21 +55,33 @@
             }
         }
     }
-    function returnPLALISTURL(){
+    function returnPLALISTURL() {
         var regexik = /.*channel.[U][C]/gi;
-        var channelid = null;
-        var channel_id_elem = document.getElementsByClassName('yt-simple-endpoint style-scope yt-formatted-string');
-        for(var i=0;i<channel_id_elem.length;i++){
-            if(channel_id_elem[i].href.includes("/channel/")){
-                channelid = channel_id_elem[i].href.replace(regexik, '');
-                break;
+        var channelIDz = null;
+        var counter = 0;
+        var firstOne = null;
+        var infoClass = document.getElementsByClassName("yt-simple-endpoint style-scope yt-formatted-string");
+        for (var i = 0; i < infoClass.length; i++) {
+            if (infoClass[i].href.includes("/channel/")) {
+                if (counter == 0) {
+                    firstOne = infoClass[i].href.replace(regexik, '');
+                }
+                counter++;
+                channelIDz = infoClass[i].href.replace(regexik, ''); //last one is the right one, leave it in variable
             }
         }
 
         if (window.location.href.indexOf("watch?v=") > -1) {
-            var finalURL = "https://www.youtube.com/playlist?list=UU" + channelid;
-            console.log(finalURL);
-            return finalURL;
+            if (counter != 1) {
+                channelIDz = firstOne;
+            }
+            var finalURL = "https://www.youtube.com/playlist?list=UU" + channelIDz;
+
+            if (channelIDz != null) {
+                console.log("channel ID: " + channelIDz);
+                console.log("channel URL: " + finalURL);
+                return finalURL;
+            }
         }
     }
 })();
