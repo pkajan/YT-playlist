@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Youtube uploads as playlist-
+// @name        Youtube uploads as playlist
 // @namespace   pk-scripts
 // @version     2.1
 // @description Create playlist of all uploaded videos from user.
@@ -7,8 +7,8 @@
 // @copyright   pK 2022
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @match       *://*.youtube.com/*
-// @downloadURL https://-github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
-// @updateURL   https://-github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
+// @downloadURL https://github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
+// @updateURL   https://github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
 // @grant       none
 // ==/UserScript==
 
