@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        Youtube uploads as playlist
 // @namespace   pk-scripts
-// @version     2.1
+// @version     2.2
 // @description Create playlist of all uploaded videos from user.
 // @author      pK
-// @copyright   pK 2022
+// @copyright   pK 2023
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @match       *://*.youtube.com/*
 // @downloadURL https://github.com/pkajan/YT-playlist/raw/master/YT_all_uploads_as_playlist.user.js
@@ -17,7 +17,7 @@
         var button = document.createElement("div");
         button.className = "playlistcreate";
         button.style.cssText = "color: #FFFFFF;";
-        button.style.cssText = "margin-left: 10px;";
+        button.style.cssText += "margin-left: 10px;";
         button.style.cssText += "font-family: Roboto,Arial,sans-serif;";
         button.style.cssText += "border-radius: 20px;";
         button.style.cssText += "font-size: 14px;";
@@ -34,7 +34,7 @@
         button.onclick = function() {
             window.location.replace("https://www.youtube.com/playlist?list=UU" + cleanedID.substring(2, cleanedID.size));
         }
-        document.getElementsByClassName("item style-scope ytd-watch-metadata")[0].appendChild(button);
+        document.getElementsByClassName("style-scope ytd-video-primary-info-renderer")[0].appendChild(button);
     }
 
     function doTheThing(){
